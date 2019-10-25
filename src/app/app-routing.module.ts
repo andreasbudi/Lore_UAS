@@ -1,10 +1,20 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'notes', pathMatch: 'full' },
-  { path: "notes", loadChildren: "./home/home.module#HomePageModule" },
-  { path: "notes/:id", loadChildren: "./detail/detail.module#DetailPageModule" }
+  { path: 'auth', loadChildren: './auth/auth.module#AuthPageModule' },
+  {
+    path: "notes",
+    loadChildren: "./home/home.module#HomePageModule",
+    canLoad: [AuthGuard]
+  },
+  {
+    path: "notes/:id",
+    loadChildren: "./detail/detail.module#DetailPageModule",
+    canLoad: [AuthGuard]
+  }
 ];
 
 @NgModule({
