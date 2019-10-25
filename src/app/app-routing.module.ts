@@ -15,7 +15,9 @@ const routes: Routes = [
     loadChildren: "./detail/detail.module#DetailPageModule",
     canLoad: [AuthGuard]
   },
-  { path: 'friend-list', loadChildren: './friend-list/friend-list.module#FriendListPageModule' }
+  { path: 'friend-list', loadChildren: './friend-list/friend-list.module#FriendListPageModule' },
+  { path: 'my-booking', loadChildren: './my-booking/my-booking.module#MyBookingPageModule' }
+
 
 ];
 
