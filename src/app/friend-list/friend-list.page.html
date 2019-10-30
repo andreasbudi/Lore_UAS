@@ -1,17 +1,23 @@
 <ion-header>
   <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-menu-button menu="m1"></ion-menu-button>
-        </ion-buttons>
-    <ion-title>Friend_list</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="m1"></ion-menu-button>
+    </ion-buttons>
+    <div class="ion-text-center">
+      <ion-title>
+          Friends
+        </ion-title>
+    </div>
+    <ion-buttons slot="primary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-searchbar></ion-searchbar>
-<div class="ion-text-center">
-    <h3>Friend List</h3>
-  </div>
+
 <ion-content>
-    <ion-card>
+    <ion-searchbar></ion-searchbar>
       <ion-item-sliding>
       
           <ion-item>
@@ -57,5 +63,10 @@
                   <ion-item-option color="danger" (click)="unread(item)">Unfriend</ion-item-option>
                 </ion-item-options>
               </ion-item-sliding>
-            </ion-card>
+
+              <ion-fab horizontal="end" vertical="bottom" slot="fixed">
+                <ion-fab-button color="danger">
+                  <ion-icon name="add"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
 </ion-content>
