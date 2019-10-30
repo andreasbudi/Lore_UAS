@@ -21,8 +21,9 @@ export class HomePage {
       header: 'Add Reminder',
       inputs: [
         {
+          placeholder: 'Something in your mind..',
           type: 'text',
-          name: 'title'
+          name: 'content'
         },
       ],
       buttons: [
@@ -32,7 +33,7 @@ export class HomePage {
         {
           text: 'Save',
           handler: (data) => {
-            this.notesService.createNote(data.title);
+            this.notesService.createNote(data.content);
           }
         }
       ]

@@ -13,13 +13,6 @@
         <ion-icon slot="icon-only" name="person"></ion-icon>
       </ion-button>
     </ion-buttons>
-
-    <ion-buttons slot="end">
-        <ion-item  lines="none">
-                     <ion-button> <ion-icon name="person"></ion-icon> </ion-button>
-        </ion-item>
-    </ion-buttons>
-
   </ion-toolbar>
 </ion-header>
 
@@ -27,7 +20,7 @@
 
   <ion-list>
     <ion-item button detail *ngFor="let note of notesService.notes" [routerLink]="'/notes/' + note.id" routerDirection="forward">
-      <ion-label>{{ note.title }}</ion-label>
+      <ion-label>{{ note.content }}</ion-label>
     </ion-item>
   </ion-list>
 
