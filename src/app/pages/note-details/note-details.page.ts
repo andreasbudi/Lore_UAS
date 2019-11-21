@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Note, NoteService } from 'src/app/services/note.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../../component/popover/popover.component';
 
 @Component({
   selector: 'app-note-details',
@@ -22,7 +24,8 @@ export class NoteDetailsPage implements OnInit {
     private noteService: NoteService,
     private route: ActivatedRoute,
     private loadingController: LoadingController,
-    private navController: NavController
+    private navController: NavController,
+    public popoverController: PopoverController
   ) { }
 
   ngOnInit() {
@@ -61,6 +64,15 @@ export class NoteDetailsPage implements OnInit {
         this.navController.navigateBack('home');
       });
     }
+  }
+
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: PopoverComponent,
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
   }
 
 }

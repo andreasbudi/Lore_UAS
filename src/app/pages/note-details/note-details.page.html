@@ -4,10 +4,14 @@
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
     <ion-title>Details</ion-title>
+    <ion-buttons slot="end" class="ion-padding">
+    <ion-icon name="more" (click)="presentPopover($event)"></ion-icon>
+  </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content>
+    
   <ion-list lines="full">
     <ion-item>
       <ion-input required type="text" placeholder="Task" [(ngModel)]="note.task">
@@ -20,4 +24,5 @@
 
   </ion-list>
   <ion-button expand="block" (click)="saveNote()">Save</ion-button>
+
 </ion-content>
