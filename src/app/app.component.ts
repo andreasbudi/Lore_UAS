@@ -3,7 +3,8 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { AuthService } from './auth/auth.service';
+
+import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,8 +17,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private authSrvc: AuthService,
-    private router: Router
+    private router: Router, 
+    private authSvc: AuthService
   ) {
     this.initializeApp();
   }
@@ -29,9 +30,8 @@ export class AppComponent {
     });
   }
 
-  onLogout()
-  {
-    this.authSrvc.logout();
+  onLogout() {
+    this.authSvc.logout();
     this.router.navigateByUrl('/auth');
   }
 }

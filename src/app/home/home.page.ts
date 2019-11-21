@@ -1,45 +1,26 @@
-import { Component } from '@angular/core';
-import { NavController, AlertController } from '@ionic/angular';
-import { NotesService } from '../services/notes.service';
+import { Component, OnInit } from '@angular/core';
+import { Note, NoteService } from '../services/note.service';
+import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  notes: Note[];
 
-  constructor(public notesService: NotesService, private alertCtrl: AlertController, private navCtrl: NavController) {}
-
-  ngOnInit(){
-    this.notesService.load();
-  }
-
-  addNote(){
-
-    this.alertCtrl.create({
-      header: 'Add Reminder',
-      inputs: [
-        {
-          placeholder: 'Something in your mind..',
-          type: 'text',
-          name: 'content'
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancel'
-        },
-        {
-          text: 'Save',
-          handler: (data) => {
-            this.notesService.createNote(data.content);
-          }
-        }
-      ]
-    }).then((alert) => {
-      alert.present();
+  constructor(private noteService: NoteService,private router: Router, private authSvc: AuthService) {}
+  ngOnInit(): void {
+    this.noteService.getNotes().subscribe(res => {
+      this.notes = res;
     });
-
   }
+
+  remove(item) {
+    this.noteService.removeNote(item.id);
+  }
+
+
 }
