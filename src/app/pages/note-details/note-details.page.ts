@@ -30,6 +30,7 @@ export class NoteDetailsPage implements OnInit {
 
   ngOnInit() {
     this.noteId = this.route.snapshot.params['id'];
+    console.log(this.noteId);
     if (this.noteId) {
       this.loadNote();
     }
@@ -66,9 +67,11 @@ export class NoteDetailsPage implements OnInit {
     }
   }
 
-  async presentPopover(ev: any) {
+  async presentPopover(ev: any ) {
+    console.log("ini yang di details presentpopover"+this.noteId);
     const popover = await this.popoverController.create({
       component: PopoverComponent,
+      componentProps:{key1:this.noteId},
       event: ev,
       translucent: true
     });

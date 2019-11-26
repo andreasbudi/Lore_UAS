@@ -19,6 +19,7 @@ export class HomePage implements OnInit {
   }
 
   remove(item) {
+    console.log(item);
     this.noteService.removeNote(item.id);
   }
 
