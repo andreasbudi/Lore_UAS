@@ -14,15 +14,15 @@
     
   <ion-list lines="full">
     <ion-item>
-      <ion-input required type="text" placeholder="Task" [(ngModel)]="note.task">
+      <ion-input required type="text" placeholder="Note Content" [(ngModel)]="inputText">
       </ion-input>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-input required type="number" placeholder="Priority" [(ngModel)]="note.priority">
       </ion-input>
-    </ion-item>
+    </ion-item> -->
 
   </ion-list>
-  <ion-button expand="block" (click)="saveNote()">Save</ion-button>
+  <ion-button expand="block" (click)="saveNote({name:inputText})">Save</ion-button>
 
 </ion-content>

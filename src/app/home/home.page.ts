@@ -1,27 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { Note, NoteService } from '../services/note.service';
-import { AuthService } from '../auth/auth.service';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import * as firebase from 'firebase';
+import { snapshotToArray } from '../../environments/environment';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
-  notes: Note[];
+export class HomePage {
 
-  constructor(private noteService: NoteService,private router: Router, private authSvc: AuthService) {}
-  ngOnInit(): void {
-    this.noteService.getNotes().subscribe(res => {
-      this.notes = res;
+  notes;
+  ref = firebase.database().ref('notes/');
+
+  constructor() {
+    this.ref.on('value', resp => {
+      this.notes = snapshotToArray(resp);
     });
   }
-
-  remove(item) {
-    console.log(item);
-    this.noteService.removeNote(item.id);
-  }
-
-
 }

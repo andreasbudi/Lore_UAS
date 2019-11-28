@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { FIREBASE_CONFIG } from 'src/environments/environment';
 
 interface AuthResponseData{
   kind: string;
@@ -23,7 +23,7 @@ export class AuthService {
 
   signup(email: string, password: string) {
       return this.http.post<AuthResponseData>(
-        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.firebase.apiKey}`,
+        `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${FIREBASE_CONFIG.apiKey}`,
         {
           email,
           password,
@@ -42,7 +42,7 @@ export class AuthService {
     this.isAuthenticated = true;
     console.log(this.isAuthenticated);
     return this.http.post<AuthResponseData>(
-      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${environment.firebase.apiKey}`,
+      `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${FIREBASE_CONFIG.apiKey}`,
       {
         email,
         password,

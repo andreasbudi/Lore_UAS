@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Note, NoteService } from 'src/app/services/note.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingController, NavController } from '@ionic/angular';
 import { PopoverController } from '@ionic/angular';
-import { PopoverComponent } from '../../component/popover/popover.component';
+import { PopoverComponent } from '../component/popover/popover.component';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-note-details',
@@ -12,16 +12,13 @@ import { PopoverComponent } from '../../component/popover/popover.component';
 })
 export class NoteDetailsPage implements OnInit {
 
-  note: Note = {
-    task: 'Test 123',
-    createdAt: new Date().getTime(),
-    priority: 2
-  };
-
   noteId = null;
 
+  notes;
+  ref = firebase.database().ref('notes/');
+  inputText:string = '';
+
   constructor(
-    private noteService: NoteService,
     private route: ActivatedRoute,
     private loadingController: LoadingController,
     private navController: NavController,
@@ -30,52 +27,54 @@ export class NoteDetailsPage implements OnInit {
 
   ngOnInit() {
     this.noteId = this.route.snapshot.params['id'];
-    console.log(this.noteId);
-    if (this.noteId) {
-      this.loadNote();
-    }
   }
 
-  async loadNote() {
-    const loading = await this.loadingController.create({
-      message: 'Loading Note...'
-    });
-    await loading.present();
+  // async loadNote() {
+  //   const loading = await this.loadingController.create({
+  //     message: 'Loading Note...'
+  //   });
+  //   await loading.present();
 
-    this.noteService.getNote(this.noteId).subscribe(res => {
-      loading.dismiss();
-      this.note = res;
-    });
-  }
+  //   this.noteService.getNote(this.noteId).subscribe(res => {
+  //     loading.dismiss();
+  //     this.note = res;
+  //   });
+  // }
 
-  async saveNote() {
+
+   async saveNote(note) {
     const loading = await this.loadingController.create({
       message: 'Saving Note...'
     });
     await loading.present();
-
+    // ini update 
     if (this.noteId) {
-      this.noteService.updateNote(this.note, this.noteId).then(() => {
+      firebase.database().ref('notes/'+this.noteId).update({name:note.name}).then(() => {
         loading.dismiss();
-        this.navController.navigateBack('home');
-      })
-    } else {
-      this.noteService.addNote(this.note).then(() => {
-        loading.dismiss();
-        this.navController.navigateBack('home');
       });
+      this.navController.navigateBack('home');
+    }else {
+      // ini push
+      let newNote = this.ref.push();
+      newNote.set(note).then(() => {
+        loading.dismiss();
+      });
+      this.navController.navigateBack('home');
     }
   }
 
   async presentPopover(ev: any ) {
-    console.log("ini yang di details presentpopover"+this.noteId);
     const popover = await this.popoverController.create({
       component: PopoverComponent,
       componentProps:{key1:this.noteId},
       event: ev,
       translucent: true
     });
-    return await popover.present();
+    if (this.noteId != null) {
+      return await popover.present();
+    } else {
+      popover.dismiss();
+    }
   }
 
 }

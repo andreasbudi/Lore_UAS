@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NoteService, Note } from 'src/app/services/note.service';
 import { ActivatedRoute } from '@angular/router';
-import { ValueAccessor } from '@ionic/angular/dist/directives/control-value-accessors/value-accessor';
-import { NavParams } from '@ionic/angular';
+import { NavParams, NavController, PopoverController } from '@ionic/angular';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-popover',
@@ -11,28 +10,23 @@ import { NavParams } from '@ionic/angular';
 })
 export class PopoverComponent implements OnInit {
 
-  note: Note = {
-    task: 'Test 123',
-    createdAt: new Date().getTime(),
-    priority: 2
-  };
+  notes;
+  ref = firebase.database().ref('notes/');
   noteId = null;
+
   constructor(
-    private noteService: NoteService,
     private route: ActivatedRoute,
-    public navParams:NavParams) { 
-      console.log(this.navParams.data);
+    public navParams:NavParams,
+    private navController: NavController,
+    public popoverController: PopoverController) { 
       this.noteId = this.navParams.get('key1');
     }
 
-    ngOnInit() {
+    ngOnInit() {}
 
-      console.log("ini yang di init"+this.route.snapshot.params['id']);
-      // this.noteId = this.route.snapshot.params['id'];
-    }
-
-    remove() {
-      console.log(this.noteId+"ini id yang mau di remove ");
-      this.noteService.removeNote(this.noteId);
-    }
+    removeNote() {
+      firebase.database().ref('notes/'+this.noteId).remove();
+      this.popoverController.dismiss();
+      this.navController.navigateBack('home');
+     }
 }
