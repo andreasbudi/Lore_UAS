@@ -13,6 +13,11 @@ export const FIREBASE_CONFIG = {
   measurementId: "G-83T712NF3H"
 };
 
+export const environment = {
+  production: false,
+  mapsAPIKey: "AIzaSyBz8mH4PjNWtelIa_7Izn1xDaD4_tDiYXU"
+}
+
 export const snapshotToArray = snapshot => {
   let returnArray = [];
   snapshot.forEach(element => {
