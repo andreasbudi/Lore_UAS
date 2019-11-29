@@ -17,11 +17,21 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let note of notes" [routerLink]="['/details', note.key]">
-      {{note.name}}
-    </ion-item>
-  </ion-list>
+  <!-- <ion-list> -->
+  <ion-grid class="ion-no-padding">
+    <ion-row class="ion-align-items-start">
+      <ion-col size="6" *ngFor="let note of notes">
+
+       <ion-card button [routerLink]="['/details', note.key]">
+          <ion-card-content>
+            {{ note.name }}
+            <br><br>
+            {{ note.createdAt | date:'short' }}
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/details" routerDirection="forward">

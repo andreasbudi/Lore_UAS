@@ -55,10 +55,15 @@ export class NoteDetailsPage implements OnInit {
       this.navController.navigateBack('home');
     }else {
       // ini push
+      
       let newNote = this.ref.push();
+      note.createdAt=new Date().getTime();
+      note.remindTime='';
+      note.remindPlace='';
       newNote.set(note).then(() => {
         loading.dismiss();
       });
+      // newNote.set({note,createdAt:this.createdAt});
       this.navController.navigateBack('home');
     }
   }
