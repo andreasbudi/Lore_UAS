@@ -9,10 +9,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { PopoverComponent } from './component/popover/popover.component';
+import { ModalComponent } from './component/modal/modal.component';
 
 @NgModule({
-  declarations: [AppComponent, PopoverComponent],
-  entryComponents: [PopoverComponent],
+  declarations: [AppComponent, PopoverComponent,ModalComponent],
+  entryComponents: [PopoverComponent,ModalComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   HttpClientModule],
   providers: [

@@ -27,20 +27,11 @@ export class NoteDetailsPage implements OnInit {
 
   ngOnInit() {
     this.noteId = this.route.snapshot.params['id'];
+    this.ref.on("child_added", function(snapshot) {
+      console.log(snapshot.val().name);
+    });
+    
   }
-
-  // async loadNote() {
-  //   const loading = await this.loadingController.create({
-  //     message: 'Loading Note...'
-  //   });
-  //   await loading.present();
-
-  //   this.noteService.getNote(this.noteId).subscribe(res => {
-  //     loading.dismiss();
-  //     this.note = res;
-  //   });
-  // }
-
 
    async saveNote(note) {
     const loading = await this.loadingController.create({
