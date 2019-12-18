@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: 'details/:id', loadChildren: './note-details/note-details.module#NoteDetailsPageModule' },
   { path: 'auth', loadChildren: './auth/auth.module#AuthPageModule' },
   { path: 'location', loadChildren: './location/location.module#LocationPageModule' },
+  { path: 'friendlist', loadChildren: './friendlist/friendlist.module#FriendlistPageModule' },
 ];
 
 @NgModule({

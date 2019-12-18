@@ -22,6 +22,8 @@ export class AuthPage implements OnInit {
       resp => {
         if (resp.idToken) {
           console.log(resp);
+          this.authSvc.setUser(resp.localId);
+          localStorage.setItem("userid", resp.localId);
           this.router.navigateByUrl('/home');
         } else {
           console.log('Login Failed');
@@ -39,4 +41,6 @@ export class AuthPage implements OnInit {
     });
     return await modal.present();
   }
+
+
 }

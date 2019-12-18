@@ -27,10 +27,16 @@
 
 .modal-fullscreen {
     .modal-wrapper {
-        --height: 31%;
+        --height: 39%;
         --width: 80%;
         position: absolute; 
         top: 30%;
         display: block;
       }
 }
+
+.map{
+    position: relative;
+    height: 100%;
+  }
+
