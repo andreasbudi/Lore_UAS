@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Friendlist
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-input [(ngModel)]="inputText" placeholder="Item name"></ion-input>
+  <ion-button expand="full" (click)="addItem({email:inputText})">Add</ion-button>
+
+  <ion-input [(ngModel)]="inputTextSearch" placeholder="Item Search"></ion-input>
+  <ion-button expand="full" (click)="searchItem({email:inputTextSearch})">Search</ion-button>
+
+  <ion-list>
+    MYfrined
+    <ion-item *ngFor="let item of friends" (click)="editItem(item)">
+      {{item.email}}
+    </ion-item>
+    ADD new friend
+    <ion-item *ngFor="let item of search_friends" (click)="addItem(item)">
+      {{item.email}}
+    </ion-item>
+  </ion-list>
+</ion-content>
