@@ -14,15 +14,10 @@
     
   <ion-list lines="full">
     <ion-item>
-      <ion-input required type="text" placeholder="Note Content" [(ngModel)]="inputText">
-      </ion-input>
+      <ion-textarea rows="6" required type="text" placeholder="Note Content" [(ngModel)]="inputText">
+      </ion-textarea>
     </ion-item>
-    <!-- <ion-item>
-      <ion-input required type="number" placeholder="Priority" [(ngModel)]="note.priority">
-      </ion-input>
-    </ion-item> -->
-
   </ion-list>
-  <ion-button expand="block" (click)="saveNote({name:inputText,createdAt:''})">Save</ion-button>
+  <ion-button expand="block" (click)="saveNote({name:inputText})">Save</ion-button>
 
 </ion-content>

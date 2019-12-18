@@ -19,14 +19,15 @@
 <ion-content>
   <!-- <ion-list> -->
   <ion-grid class="ion-no-padding">
-    <ion-row class="ion-align-items-start">
+    <ion-row>
       <ion-col size="6" *ngFor="let note of notes">
 
        <ion-card button [routerLink]="['/details', note.key]">
           <ion-card-content>
             {{ note.name }}
             <br><br>
-            {{ note.createdAt | date:'short' }}
+            {{ note.createdAt | date:'dd MMM H:mm a' }}
+            <ion-icon slot="end" name="alarm" *ngIf="!note.remindDate"></ion-icon>
           </ion-card-content>
         </ion-card>
       </ion-col>
