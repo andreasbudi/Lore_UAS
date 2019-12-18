@@ -35,6 +35,7 @@ export class PopoverComponent implements OnInit {
      async presentModal() {
       const modal = await this.modalController.create({
         component: ModalComponent,
+        componentProps:{key1:this.noteId},
         cssClass: 'modal-fullscreen',
       });
       return await modal.present();

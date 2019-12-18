@@ -49,6 +49,7 @@ export class NoteDetailsPage implements OnInit {
       
       let newNote = this.ref.push();
       note.createdAt=new Date().getTime();
+      note.remindDate='';
       note.remindTime='';
       note.remindPlace='';
       newNote.set(note).then(() => {

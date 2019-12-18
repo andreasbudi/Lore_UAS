@@ -9,11 +9,11 @@
   <ion-list>
     <ion-item>
       <ion-label>Set Date</ion-label>
-      <ion-datetime value="1990-02-19" placeholder="Select Date"></ion-datetime>
+      <ion-datetime placeholder="Select Date" [(ngModel)]="inputDate"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Set Time</ion-label>
-      <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
+      <ion-datetime display-format="h:mm A" picker-format="h:mm A" [(ngModel)]="inputTime"></ion-datetime>
     </ion-item>
     <ion-item>
       <ion-label>Place</ion-label>
@@ -29,14 +29,10 @@
     <ion-item>
       <ion-label>Friend</ion-label>
       <ion-select interface="popover">
-        <ion-select-option value="nes">NES</ion-select-option>
-        <ion-select-option value="n64">Nintendo64</ion-select-option>
-        <ion-select-option value="ps">PlayStation</ion-select-option>
-        <ion-select-option value="genesis">Sega Genesis</ion-select-option>
-        <ion-select-option value="saturn">Sega Saturn</ion-select-option>
-        <ion-select-option value="snes">SNES</ion-select-option>
+        <ion-select-option *ngFor="let item of friends" value="{{item.email}}">{{item.email}}</ion-select-option>
+
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-button expand="block">Save</ion-button>
+  <ion-button expand="block" (click)="saveNote({remindDate:inputDate,remindTime:inputTime})">Save</ion-button>
 </ion-content>
