@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { MapModalComponent } from '../shared/map-modal/map-modal.component';
+// import { MapModalComponent } from '../shared/map-modal/map-modal.component';
 
 @Component({
   selector: 'app-location',
@@ -13,15 +13,15 @@ export class LocationComponent implements OnInit {
 
   ngOnInit() {}
 
-  async onPickLocation() {
-        const modal = await this.modalCtrl.create({
-          component: MapModalComponent
-        });
-        modal.onDidDismiss().then((modalData) => {
-          console.log(modalData.data);
-        });
-        return await modal.present();
-      }
+  // async onPickLocation() {
+  //   //     const modal = await this.modalCtrl.create({
+  //   // //       component: MapModalComponent
+  //   //     });
+  //       modal.onDidDismiss().then((modalData) => {
+  //         console.log(modalData.data);
+  //       });
+  //       return await modal.present();
+  //     }
     
 
 }

@@ -1,5 +1,7 @@
 {
   "name": "Lore",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
