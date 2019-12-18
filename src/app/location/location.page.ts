@@ -90,6 +90,19 @@ export class LocationPage implements OnInit, AfterViewInit {
       infowindowContent.children['place-name'].textContent = place.name;
       infowindowContent.children['place-address'].textContent = address;
       infowindow.open(map, marker);
+      var test = autocomplete.getPlace();
+      console.log(test.formatted_address);
+      console.log(test.url);
+      console.log(test.geometry.location.lat());
+      console.log(test.geometry.location.lng());
+      console.log(test.geometry);
+      console.log(test.formatted_phone_number);
+      console.log(test.name);
+      console.log(test.opening_hours);
+      console.log(test.place_id);
+      console.log(test.rating);
+      console.log(test.types);
+      console.log(test.website);
     });
     map.addListener('click', function(e) {
       map.panTo(e.latLng);
