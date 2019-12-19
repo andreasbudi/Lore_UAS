@@ -10,7 +10,7 @@ import { snapshotToArray } from '../../environments/environment';
 export class HomePage {
 
   notes;
-  ref = firebase.database().ref('notes/');
+  ref = firebase.database().ref('user/'+localStorage.getItem("user_key")+'/notes/');
 
   constructor() {
     this.ref.on('value', resp => {

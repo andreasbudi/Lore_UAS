@@ -27,7 +27,7 @@
             {{ note.name }}
             <br><br>
             {{ note.createdAt | date:'dd MMM H:mm a' }}
-            <ion-icon slot="end" name="alarm" *ngIf="!note.remindDate"></ion-icon>
+            <ion-icon slot="end" name="alarm" *ngIf="note.remindDate"></ion-icon>
           </ion-card-content>
         </ion-card>
       </ion-col>

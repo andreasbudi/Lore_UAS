@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, LoadingController, NavController, NavParams } from '@ionic/angular';
+import { ModalController, LoadingController, NavController, NavParams, PopoverController } from '@ionic/angular';
 import * as firebase from "firebase";
 import { snapShotToArray } from 'src/app/envroinment';
 import { ActivatedRoute } from '@angular/router';
@@ -13,7 +13,6 @@ export class ModalComponent implements OnInit {
   friends = [];
   noteId = null;
   ref = firebase.database().ref('user/'+localStorage.getItem("user_key")+'/friends/');
-  refNote = firebase.database().ref('notes/');
   inputDate:string='';
   inputTime:string='';
   inputPlace:string='';
@@ -27,7 +26,8 @@ export class ModalComponent implements OnInit {
               private route: ActivatedRoute,
               public navParams:NavParams,
               private loadingController: LoadingController,
-              private navController: NavController,) {
+              private navController: NavController,
+              public popoverController: PopoverController,) {
     var ref = firebase.database().ref('user/'+localStorage.getItem("user_key")+'/friends/');
     ref.on('value',resp => {
       this.friends = snapShotToArray(resp);
@@ -50,11 +50,12 @@ export class ModalComponent implements OnInit {
     });
     await loading.present();
     // ini update 
-    console.log(note.remindPlace);
-      firebase.database().ref('notes/'+this.noteId).update({remindDate:note.remindDate,remindPlace:note.remindPlace,remindTime:note.remindTime,remindFriend:note.remindFriend}).then(() => {
+    console.log(note);
+      firebase.database().ref('user/'+localStorage.getItem("user_key")+'/notes/'+ this.noteId).update({remindDate:note.remindDate,remindFriend:note.remindFriend,remindPlace:note.remindPlace,remindTime:note.remindTime}).then(() => {
         loading.dismiss();
         this.modalController.dismiss();
       });
+      this.popoverController.dismiss();
       this.navController.navigateBack('home');
   }
 

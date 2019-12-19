@@ -12,7 +12,7 @@ import { ModalComponent } from '../modal/modal.component';
 export class PopoverComponent implements OnInit {
 
   notes;
-  ref = firebase.database().ref('notes/');
+  ref = firebase.database().ref('user/'+localStorage.getItem("user_key")+'/notes/');
   noteId = null;
 
   constructor(
@@ -27,7 +27,7 @@ export class PopoverComponent implements OnInit {
     ngOnInit() {}
 
     removeNote() {
-      firebase.database().ref('notes/'+this.noteId).remove();
+      firebase.database().ref('user/'+localStorage.getItem("user_key")+'/notes/').remove();
       this.popoverController.dismiss();
       this.navController.navigateBack('home');
      }

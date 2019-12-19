@@ -15,7 +15,7 @@ export class NoteDetailsPage implements OnInit {
   noteId = null;
 
   notes;
-  ref = firebase.database().ref('notes/');
+  ref = firebase.database().ref('user/'+localStorage.getItem("user_key")+'/notes/');
   inputText:string = '';
 
   constructor(
@@ -40,7 +40,7 @@ export class NoteDetailsPage implements OnInit {
     await loading.present();
     // ini update 
     if (this.noteId) {
-      firebase.database().ref('notes/'+this.noteId).update({name:note.name}).then(() => {
+      firebase.database().ref('user/'+localStorage.getItem("user_key")+'/notes/'+ this.noteId).update({name:note.name}).then(() => {
         loading.dismiss();
       });
       this.navController.navigateBack('home');

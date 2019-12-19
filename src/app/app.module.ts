@@ -14,7 +14,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { Firebase } from '@ionic-native/firebase/ngx';
 
 const FIREBASE_CONFIG = {
   apiKey: "AIzaSyCCljPsrOdqBTx2fMTrnwsb0TMPEyJKys4",

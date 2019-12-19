@@ -17,17 +17,16 @@
     </ion-item>
     <ion-item>
       <ion-label>Place</ion-label>
-      <ion-select interface="popover">
-          <ion-select-option *ngFor="let placeitem of Place" [(ngModel)]="inputPlace" value={{placeitem.name}}>{{placeitem.name}}</ion-select-option>
+      <ion-select [(ngModel)]="inputPlace" interface="popover">
+        <ion-select-option *ngFor="let placeitem of Place"  ngDefaultControl  value="{{placeitem.name}}">{{placeitem.name}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Friend</ion-label>
-      <ion-select interface="popover">
-        <ion-select-option *ngFor="let item of friends" [(ngModel)]="inputFriend" value={{item.email}}>{{item.email}}</ion-select-option>
-
+      <ion-select [(ngModel)]="inputFriend" interface="popover">
+        <ion-select-option *ngFor="let item of friends"  ngDefaultControl  value="{{item.email}}">{{item.email}}</ion-select-option>
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-button expand="block" (click)="saveNote({remindDate:inputDate,remindPlace:inputPlace,remindTime:inputTime,remindFriend:inputFriend})">Save</ion-button>
+  <ion-button expand="block" (click)="saveNote({remindDate:inputDate,remindFriend:inputFriend,remindPlace:inputPlace,remindTime:inputTime})">Save</ion-button>
 </ion-content>

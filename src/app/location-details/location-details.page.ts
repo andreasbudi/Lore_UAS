@@ -42,12 +42,12 @@ export class LocationDetailsPage implements OnInit {
         let obj = JSON.parse(res);
         let test = localStorage.getItem('user_key');
         firebase.database().ref('user/'+test+'/location').push().set({
-          "id":obj[0].id,
-          "name":obj[0].name,
-          "address":obj[0].address,
-          "lat":obj[0].lat,
-          "lng":obj[0].lng,
-          "rating":obj[0].rating
+          "id":obj.id,
+          "name":obj.name,
+          "address":obj.address,
+          "lat":obj.lat,
+          "lng":obj.lng,
+          "rating":obj.rating
         });
         loadingEl.dismiss();
         // this.modalCtrl.dismiss({message: 'Location Saved!'},
