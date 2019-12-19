@@ -42,13 +42,23 @@ export class FriendlistPage implements OnInit {
     var fetched=[];
     var user = this.authSvc.getUser();
     var ref = firebase.database().ref('/user');
-    
-    ref.orderByChild('email').equalTo(target.email).on("value", function(snapshot) {
-      snapshot.forEach(function(data) {
-        fetched = Array({email: target.email});
+    if(target.email==localStorage.getItem("user_email")){
+      fetched = Array({email: "YPU CANT ADD YOURSELF"});
+    }
+    else{
+      ref.orderByChild('email').equalTo(target.email).on("value", function(snapshot) {
+        snapshot.forEach(function(data) {
+          fetched = Array({email: target.email});
+        });
+        console.log("lewat sini1");
       });
-      console.log("lewat sini1");
-    });
+    }
+    // ref.orderByChild('email').equalTo(target.email).on("value", function(snapshot) {
+    //   snapshot.forEach(function(data) {
+    //     fetched = Array({email: target.email});
+    //   });
+    //   console.log("lewat sini1");
+    // });
     this.search_friends = fetched;
     console.log("lewat sini2");
     

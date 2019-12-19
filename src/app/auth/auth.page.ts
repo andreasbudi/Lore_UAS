@@ -43,6 +43,7 @@ export class AuthPage implements OnInit {
       snapshot.forEach(function(data) {
         console.log(data.key);
         localStorage.setItem("user_key",data.key);
+        localStorage.setItem("user_email",email);
       });
       console.log("lewat sini1");
     });
