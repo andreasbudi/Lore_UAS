@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-auth',
@@ -22,8 +23,7 @@ export class AuthPage implements OnInit {
       resp => {
         if (resp.idToken) {
           console.log(resp);
-          this.authSvc.setUser(resp.localId);
-          localStorage.setItem("userid", resp.localId);
+          this.user_key(resp.email);
           this.router.navigateByUrl('/home');
         } else {
           console.log('Login Failed');
@@ -35,6 +35,18 @@ export class AuthPage implements OnInit {
     );
   }
 
+  user_key(email){
+    console.log(email);
+    var ref = firebase.database().ref('/user');
+    
+    ref.orderByChild('email').equalTo(email).on("value", function(snapshot) {
+      snapshot.forEach(function(data) {
+        console.log(data.key);
+        localStorage.setItem("user_key",data.key);
+      });
+      console.log("lewat sini1");
+    });
+  }
   async presentSignUpModal() {
     const modal = await this.modalCtrl.create({
       component: SignUpComponent

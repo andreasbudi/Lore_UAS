@@ -20,8 +20,7 @@ export class SignUpComponent implements OnInit {
     console.log(f.value);
     this.authSvc.signup(f.value.email, f.value.pwd).subscribe(resp => {
       console.log(resp);
-      firebase.database().ref('user/'+resp.localId).push().set({"email":resp.email,"localID":resp.localId});
-      firebase.database().ref('list_users/').push().set({"email":resp.email,"localID":resp.localId});
+      firebase.database().ref('user/').push().set({"email":resp.email});
       this.modalCtrl.dismiss();
     }); 
   }

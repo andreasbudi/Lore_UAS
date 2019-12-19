@@ -19,7 +19,7 @@ export class FriendlistPage implements OnInit {
   constructor(public events: Events,private authSvc: AuthService) {
     this.user = this.authSvc.getUser();
     console.log(this.user);
-    var ref = firebase.database().ref('user/'+localStorage.getItem("userid")+'/friends/');
+    var ref = firebase.database().ref('user/'+localStorage.getItem("user_key")+'/friends/');
     ref.on('value',resp => {
       this.friends = snapShotToArray(resp);
     });
@@ -29,17 +29,19 @@ export class FriendlistPage implements OnInit {
     if (item!==undefined && item!==null&& item.name!==""){
 
       console.log(this.user);
-      var ref = firebase.database().ref('user/'+localStorage.getItem("userid")+'/friends/');
+      var ref = firebase.database().ref('user/'+localStorage.getItem("user_key")+'/friends/');
       let newItem = ref.push();
       newItem.set(item);
       this.inputText = '';
     }
   }
-
+  deleteItem(item){
+    firebase.database().ref('user/'+localStorage.getItem("user_key")+'/friends/'+item.key).remove();
+  }
   searchItem(target){
     var fetched=[];
     var user = this.authSvc.getUser();
-    var ref = firebase.database().ref('/list_users');
+    var ref = firebase.database().ref('/user');
     
     ref.orderByChild('email').equalTo(target.email).on("value", function(snapshot) {
       snapshot.forEach(function(data) {

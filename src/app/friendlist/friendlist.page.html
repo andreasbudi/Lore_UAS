@@ -6,14 +6,48 @@
   </ion-toolbar>
 </ion-header>
 
+
+
+
+
 <ion-content class="ion-padding">
+
+
+  
   <ion-input [(ngModel)]="inputText" placeholder="Item name"></ion-input>
   <ion-button expand="full" (click)="addItem({email:inputText})">Add</ion-button>
 
   <ion-input [(ngModel)]="inputTextSearch" placeholder="Item Search"></ion-input>
   <ion-button expand="full" (click)="searchItem({email:inputTextSearch})">Search</ion-button>
 
-  <ion-list>
+  <ion-label>Add Friend</ion-label>
+  <ion-card *ngFor="let item of search_friends" (click)="addItem(item)">
+    <ion-card-header>
+      <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
+      <ion-card-title>Card Title</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-label>List Friends</ion-label>
+  <ion-card *ngFor="let item of friends" (click)="deleteItem(item)">
+    <ion-card-header>
+      <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
+      <ion-card-title>Card Title</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      Keep close to Nature's heart... and break clear away, once in awhile,
+      and climb a mountain or spend a week in the woods. Wash your spirit clean.
+    </ion-card-content>
+  </ion-card>
+ 
+  
+  <!-- <ion-list>
     MYfrined
     <ion-item *ngFor="let item of friends" (click)="editItem(item)">
       {{item.email}}
@@ -22,5 +56,5 @@
     <ion-item *ngFor="let item of search_friends" (click)="addItem(item)">
       {{item.email}}
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 </ion-content>
