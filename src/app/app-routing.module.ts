@@ -19,6 +19,17 @@ const routes: Routes = [
   { path: 'friendlist', loadChildren: './friendlist/friendlist.module#FriendlistPageModule' },
   // { path: 'location-details', loadChildren: './location-details/location-details.module#LocationDetailsPageModule'},
   { path: 'getlocations',loadChildren: ('./getlocations/getlocations.module#GetlocationsPageModule')},
+  {
+    path: 'displaylocation',
+    loadChildren: () => import('./displaylocation/displaylocation.module').then( m => m.DisplaylocationPageModule)
+  },
+  { path: 'displaylocation/:id',
+    resolve: {
+      special: ResolveService
+    },
+    loadChildren: './displaylocation/displaylocation.module#DisplaylocationPageModule'
+  },
+
 
 ];
 

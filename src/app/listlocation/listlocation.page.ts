@@ -49,7 +49,7 @@ export class ListlocationPage implements OnInit {
       let res = localStorage.getItem('Place');
       let obj = JSON.parse(res);
 
-      this.router.navigate(['/','location-details',obj.id]);
+      this.router.navigate(['/','displaylocation',obj.id]);
   }
 
 }
