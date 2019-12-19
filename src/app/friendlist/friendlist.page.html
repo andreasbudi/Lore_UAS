@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="m1"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
       Friendlist
     </ion-title>
   </ion-toolbar>
@@ -14,36 +17,30 @@
 
 
   
-  <ion-input [(ngModel)]="inputText" placeholder="Item name"></ion-input>
-  <ion-button expand="full" (click)="addItem({email:inputText})">Add</ion-button>
 
-  <ion-input [(ngModel)]="inputTextSearch" placeholder="Item Search"></ion-input>
+  <ion-input [(ngModel)]="inputTextSearch" placeholder="Search friend"></ion-input>
   <ion-button expand="full" (click)="searchItem({email:inputTextSearch})">Search</ion-button>
-
-  <ion-label>Add Friend</ion-label>
-  <ion-card *ngFor="let item of search_friends" (click)="addItem(item)">
-    <ion-card-header>
-      <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
-      <ion-card-title>Card Title</ion-card-title>
-    </ion-card-header>
   
-    <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
-    </ion-card-content>
-  </ion-card>
-
-  <ion-label>List Friends</ion-label>
-  <ion-card *ngFor="let item of friends" (click)="deleteItem(item)">
-    <ion-card-header>
-      <ion-card-subtitle>{{item.email}}</ion-card-subtitle>
-      <ion-card-title>Card Title</ion-card-title>
-    </ion-card-header>
+  <ng-container *ngIf="search_friends">
+  <ion-item >
+    <ion-label  class="ion-text-center">Add Friend</ion-label>
+  </ion-item>
+    <ion-card  *ngFor="let item of search_friends" (click)="addItem(item)">
+      <ion-card-header>
+        <ion-card-title>{{item.email}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ng-container>
   
-    <ion-card-content>
-      Keep close to Nature's heart... and break clear away, once in awhile,
-      and climb a mountain or spend a week in the woods. Wash your spirit clean.
-    </ion-card-content>
+
+  <ion-item>
+    <ion-label class="ion-text-center">List Friend</ion-label>
+  </ion-item>
+  <ion-card *ngFor="let item of friends" (click)="alert(item)">
+    <ion-card-header>
+      <!-- <ion-card-subtitle>{{item.email}}</ion-card-subtitle> -->
+      <ion-card-title>{{item.email}}</ion-card-title>
+    </ion-card-header>
   </ion-card>
  
   

@@ -22,7 +22,8 @@ export class SignUpComponent implements OnInit {
       console.log(resp);
       firebase.database().ref('user/').push().set({"email":resp.email});
       this.modalCtrl.dismiss();
-    }); 
+    });
+
   }
 
   onCancel() {
