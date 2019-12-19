@@ -32,5 +32,6 @@ export class DisplaylocationPage implements OnInit {
   
   onClear(){
     localStorage.removeItem('Place');
+    
   }
 }

@@ -24,6 +24,7 @@ export class LocationDetailsPage implements OnInit {
       this.data = [];
     }else{
       this.data = obj;
+      
     }
     // let test = localStorage.getItem('userid');
     // console.log(test);

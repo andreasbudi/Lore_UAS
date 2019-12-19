@@ -29,6 +29,7 @@ const routes: Routes = [
     },
     loadChildren: './displaylocation/displaylocation.module#DisplaylocationPageModule'
   },
+  
   {
     path: 'geolocation',
     loadChildren: () => import('./geolocation/geolocation.module').then( m => m.GeolocationPageModule)

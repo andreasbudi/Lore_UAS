@@ -20,5 +20,6 @@ describe('DisplaylocationPage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    
   });
 });

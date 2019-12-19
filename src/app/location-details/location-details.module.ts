@@ -14,6 +14,7 @@ import { LocationDetailsPage } from './location-details.page';
     FormsModule,
     IonicModule,
     LocationDetailsPageRoutingModule
+    
   ],
   declarations: [LocationDetailsPage]
 })

@@ -20,5 +20,6 @@ describe('LocationDetailsPage', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+    
   });
 });

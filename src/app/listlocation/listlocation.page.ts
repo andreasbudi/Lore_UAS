@@ -50,6 +50,7 @@ export class ListlocationPage implements OnInit {
       let obj = JSON.parse(res);
 
       this.router.navigate(['/','displaylocation',obj.id]);
+      
   }
 
 }
