@@ -15,6 +15,8 @@ export class HomePage {
   constructor() {
     this.ref.on('value', resp => {
       this.notes = snapshotToArray(resp);
+      console.log("ini dari home");
+      console.log(this.notes);
     });
   }
 }

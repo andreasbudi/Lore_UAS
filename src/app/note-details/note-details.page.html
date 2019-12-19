@@ -14,7 +14,7 @@
     
   <ion-list lines="full">
     <ion-item>
-      <ion-textarea rows="6" required type="text" placeholder="Note Content" [(ngModel)]="inputText"></ion-textarea>
+      <ion-textarea rows="6" required type="text" placeholder="Note Content" [(ngModel)]="inputText">{{ current_note.name }}</ion-textarea>
     </ion-item>
   </ion-list>
   <ion-button expand="block" (click)="saveNote({name:inputText})">Save</ion-button>

@@ -18,6 +18,9 @@ export class NoteDetailsPage implements OnInit {
   ref = firebase.database().ref('user/'+localStorage.getItem("user_key")+'/notes/');
   inputText:string = '';
 
+  //coba
+  current_note;
+
   constructor(
     private route: ActivatedRoute,
     private loadingController: LoadingController,
@@ -27,6 +30,7 @@ export class NoteDetailsPage implements OnInit {
 
   ngOnInit() {
     this.noteId = this.route.snapshot.params['id'];
+    this.current_note = firebase.database().ref('user/'+localStorage.getItem("user_key")+'/notes/'+ this.noteId);
     this.ref.on("child_added", function(snapshot) {
       console.log(snapshot.val().name);
     });
