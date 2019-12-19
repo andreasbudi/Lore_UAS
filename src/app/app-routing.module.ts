@@ -19,7 +19,10 @@ const routes: Routes = [
   { path: 'friendlist', loadChildren: './friendlist/friendlist.module#FriendlistPageModule' },
   // { path: 'location-details', loadChildren: './location-details/location-details.module#LocationDetailsPageModule'},
   { path: 'getlocations',loadChildren: ('./getlocations/getlocations.module#GetlocationsPageModule')},
-
+  {
+    path: 'geolocation',
+    loadChildren: () => import('./geolocation/geolocation.module').then( m => m.GeolocationPageModule)
+  },
 ];
 
 @NgModule({
