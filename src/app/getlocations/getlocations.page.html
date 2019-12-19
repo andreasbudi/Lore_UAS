@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Location Details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <!-- <ion-content *ngIf="data"> -->
+      <!-- <form [formGroup]="form"> -->
+      <ion-button expand="block" routerLink="/location" routerDirection="forward">Get Location</ion-button>
+        <ion-grid>
+          <ion-row>
+            <ion-col size-sm="6" offset-sm="3">
+              <ion-item>
+                <ion-label class="input" position="floating" color="medium">Name</ion-label>
+                <!-- <ion-input type="text"></ion-input> -->
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-sm="6" offset-sm="3">
+              <ion-item>
+                <ion-label class="input" position="floating" color="medium">Address</ion-label>
+                <!-- <ion-input type="text"></ion-input> -->
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-sm="3" offset-sm="3">
+              <ion-item>
+                <ion-label class="input" position="floating" color="medium">Lat</ion-label>
+                <!-- <ion-input type="text"></ion-input> -->
+              </ion-item>
+            </ion-col>
+            <ion-col size-sm="3" offset-sm="3">
+              <ion-item>
+                <ion-label class="input" position="floating" color="medium">Lng</ion-label>
+                <!-- <ion-input type="text"></ion-input> -->
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size-sm="6" offset-sm="3">
+              <ion-item>
+                <ion-label class="input" position="floating" color="medium">Rating</ion-label>
+                <!-- <ion-input type="text"></ion-input> -->
+              </ion-item>
+            </ion-col>
+            <!-- <ion-col size-sm="3" offset-sm="3">
+                <ion-item>
+                  <ion-label position="floating" color="medium">{{ data.types }}</ion-label>
+                  <ion-input type="text"></ion-input>
+                </ion-item>
+              </ion-col> -->
+          </ion-row>
+        </ion-grid>
+      <!-- </form> -->
+      <ion-button expand="block" [disabled] color="medium" routerDirection="forward">Save Location</ion-button>
+    <!-- </ion-content> -->
+  </ion-content>
