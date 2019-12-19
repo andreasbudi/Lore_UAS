@@ -12,22 +12,31 @@ import { ActivatedRoute } from '@angular/router';
 export class ModalComponent implements OnInit {
   friends = [];
   noteId = null;
-  ref = firebase.database().ref('user/'+localStorage.getItem("userid")+'/friends/');
+  ref = firebase.database().ref('user/'+localStorage.getItem("user_key")+'/friends/');
   refNote = firebase.database().ref('notes/');
   inputDate:string='';
   inputTime:string='';
+  inputPlace:string='';
+  inputFriend:string='';
+
+  Place = [];
+  test = localStorage.getItem('user_key');
+  placeref = firebase.database().ref('user/'+this.test+'/location');
 
   constructor(private modalController: ModalController,
               private route: ActivatedRoute,
               public navParams:NavParams,
               private loadingController: LoadingController,
               private navController: NavController,) {
-    var ref = firebase.database().ref('user/'+localStorage.getItem("userid")+'/friends/');
+    var ref = firebase.database().ref('user/'+localStorage.getItem("user_key")+'/friends/');
     ref.on('value',resp => {
       this.friends = snapShotToArray(resp);
     });
+
+    this.placeref.on('value', resp => {
+      this.Place = snapShotToArray(resp);
+    });
     this.noteId = this.navParams.get('key1');
-    console.log(this.noteId);
    }
 
    ngOnInit() {
@@ -41,8 +50,8 @@ export class ModalComponent implements OnInit {
     });
     await loading.present();
     // ini update 
-
-      firebase.database().ref('notes/'+this.noteId).update({remindDate:note.remindDate,remindTime:note.remindTime}).then(() => {
+    console.log(note.remindPlace);
+      firebase.database().ref('notes/'+this.noteId).update({remindDate:note.remindDate,remindPlace:note.remindPlace,remindTime:note.remindTime,remindFriend:note.remindFriend}).then(() => {
         loading.dismiss();
         this.modalController.dismiss();
       });

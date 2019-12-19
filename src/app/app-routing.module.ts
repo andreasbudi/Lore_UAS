@@ -9,8 +9,7 @@ const routes: Routes = [
   { path: 'details/:id', loadChildren: './note-details/note-details.module#NoteDetailsPageModule' },
   { path: 'auth', loadChildren: './auth/auth.module#AuthPageModule' },
   { path: 'location', loadChildren: './location/location.module#LocationPageModule'},
-  {
-    path: 'location-details/:id',
+  { path: 'location-details/:id',
     resolve: {
       special: ResolveService
     },
@@ -18,7 +17,7 @@ const routes: Routes = [
   },
   { path: 'listlocation', loadChildren: './listlocation/listlocation.module#ListlocationPageModule'},
   { path: 'friendlist', loadChildren: './friendlist/friendlist.module#FriendlistPageModule' },
-  { path: 'location-details', loadChildren: './location-details/location-details.module#LocationDetailsPageModule'},
+  // { path: 'location-details', loadChildren: './location-details/location-details.module#LocationDetailsPageModule'},
   { path: 'getlocations',loadChildren: ('./getlocations/getlocations.module#GetlocationsPageModule')},
 
 ];

@@ -15,7 +15,7 @@ export class LocationPage implements OnInit, AfterViewInit {
   @ViewChild('mapElement', {static: true}) mapNativeElement: ElementRef;
   @ViewChild('autoCompleteInput', {static: true}) inputNativeElement: any;
   directionForm: FormGroup;
-  test = [];
+  test : any;
   lala : Place[];
 
   ngAfterViewInit(): void {
@@ -92,50 +92,9 @@ export class LocationPage implements OnInit, AfterViewInit {
         types: place.types,
         rating: place.rating
       };
-      console.log(place);
-      // console.log(selectedloc);
-      this.test.push(
-        selectedloc
-      );
-      // this.router.navigate(['/','location-details',place.place_id]);
-      // this.lala.push(
-      //   place.place_id,
-      //   place.name,
-      //   place.formatted_address,
-      //   place.geometry.location.lat(),
-      //   place.geometry.location.lng(),
-      //   place.types,
-      //   place.rating
-      // );
-      // console.log(test.formatted_address);
-      // console.log(test.url);
-      // console.log(test.geometry.location.lat());
-      // console.log(test.geometry.location.lng());
-      // console.log(test.geometry);
-      // console.log(test.formatted_phone_number);
-      // console.log(test.name);
-      // console.log(test.opening_hours);
-      // console.log(test.place_id);
-      // console.log(test.rating);
-      // console.log(test.types);
-      // console.log(test.website);
+      this.test = selectedloc;
+      console.log(this.test);
     });
-    // map.addListener('click', function(e) {
-    //   map.panTo(e.latLng);
-    //   var geocoder = new google.maps.Geocoder;
-
-    //   geocoder.geocode({'location': e.latlng}, function(results, status) {
-    //       if (status === google.maps.GeocoderStatus.OK) {
-    //         if (results[1]) {
-    //           console.log(results[1].place_id);
-    //         } else {
-    //           window.alert('No results found');
-    //         }
-    //       } else {
-    //         window.alert('Geocoder failed due to: ' + status);
-    //       }
-    //     });
-    // });
   }
 
   constructor(private fb: FormBuilder, private storage: Storage, private dataService: DataService, private router: Router) {
@@ -162,12 +121,11 @@ export class LocationPage implements OnInit, AfterViewInit {
   }
 
   sendDetails(){
-    this.dataService.setData(this.test[0], this.test);
-    this.router.navigate(['/','location-details',this.test[0]['id']]);
     localStorage.setItem('Place', JSON.stringify(this.test));
-    // console.log(JSON.parse(localStorage.get('id')));
-    // localStorage.get("id").then((output) => {
-    //   console.log(output);
-  // })
+    this.router.navigate(['/','location-details',this.test['id']]);
+  }
+
+  clearStorage(){
+    localStorage.removeItem('Place');
   }
 }

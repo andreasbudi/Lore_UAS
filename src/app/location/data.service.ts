@@ -9,8 +9,8 @@ export class DataService {
  
   constructor() { }
  
-  setData(id, data) {
-    this.save[id] = data;
+  setData(data) {
+    // this.save[id] = data;
     this.save.push(data);
     // this.setPlace();
   }

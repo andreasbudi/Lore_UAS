@@ -20,10 +20,10 @@ export class LocationDetailsPage implements OnInit {
     let res = localStorage.getItem('Place');
     let obj = JSON.parse(res);
     // console.log(obj[0].id)
-    if(obj[0] == null){
+    if(obj == null){
       this.data = [];
     }else{
-      this.data = obj[0];
+      this.data = obj;
     }
     // let test = localStorage.getItem('userid');
     // console.log(test);
@@ -40,8 +40,8 @@ export class LocationDetailsPage implements OnInit {
       setTimeout(() => {
         let res = localStorage.getItem('Place');
         let obj = JSON.parse(res);
-        let test = localStorage.getItem('userid');
-        firebase.database().ref('place/'+test).push().set({
+        let test = localStorage.getItem('user_key');
+        firebase.database().ref('user/'+test+'/location').push().set({
           "id":obj[0].id,
           "name":obj[0].name,
           "address":obj[0].address,

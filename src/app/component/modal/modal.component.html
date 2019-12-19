@@ -18,21 +18,16 @@
     <ion-item>
       <ion-label>Place</ion-label>
       <ion-select interface="popover">
-        <ion-select-option value="nes">NES</ion-select-option>
-        <ion-select-option value="n64">Nintendo64</ion-select-option>
-        <ion-select-option value="ps">PlayStation</ion-select-option>
-        <ion-select-option value="genesis">Sega Genesis</ion-select-option>
-        <ion-select-option value="saturn">Sega Saturn</ion-select-option>
-        <ion-select-option value="snes">SNES</ion-select-option>
+          <ion-select-option *ngFor="let placeitem of Place" [(ngModel)]="inputPlace" value={{placeitem.name}}>{{placeitem.name}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>Friend</ion-label>
       <ion-select interface="popover">
-        <ion-select-option *ngFor="let item of friends" value="{{item.email}}">{{item.email}}</ion-select-option>
+        <ion-select-option *ngFor="let item of friends" [(ngModel)]="inputFriend" value={{item.email}}>{{item.email}}</ion-select-option>
 
       </ion-select>
     </ion-item>
   </ion-list>
-  <ion-button expand="block" (click)="saveNote({remindDate:inputDate,remindTime:inputTime})">Save</ion-button>
+  <ion-button expand="block" (click)="saveNote({remindDate:inputDate,remindPlace:inputPlace,remindTime:inputTime,remindFriend:inputFriend})">Save</ion-button>
 </ion-content>

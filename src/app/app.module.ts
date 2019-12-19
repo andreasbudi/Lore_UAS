@@ -33,7 +33,8 @@ const FIREBASE_CONFIG = {
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
   HttpClientModule,FormsModule,
   AngularFireModule.initializeApp(FIREBASE_CONFIG),
-  AngularFirestoreModule,],
+  AngularFirestoreModule,
+],
   providers: [
     StatusBar,
     SplashScreen,
