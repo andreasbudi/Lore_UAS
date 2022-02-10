@@ -41,7 +41,7 @@
     "core-js": "^2.5.4",
     "firebase": "^7.6.1",
     "ionic-modal-component": "0.0.2",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "rxjs": "~6.5.1",
     "rxjs-compat": "^6.5.3",
     "tslib": "^1.9.0",
